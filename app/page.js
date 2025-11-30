@@ -1,38 +1,58 @@
+// app/page.js
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <section className="space-y-10">
-      {/* Hero image */}
-      <div className="relative w-full aspect-video overflow-hidden rounded-lg border border-neutral-800 bg-neutral-900">
-        <Image
-          src="/dominic-desk2.jpg"
-          alt="Timothy Williams at work in the studio"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-
-        {/* Optional overlay text at bottom left */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
-          <div className="mx-auto max-w-5xl px-4 pb-6">
-            <h1 className="text-2xl md:text-3xl font-semibold tracking-wide">
+    <div className="border-t border-neutral-200">
+      {/* Hero */}
+      <section className="border-b border-neutral-200 bg-white">
+        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 md:flex-row md:items-center">
+          <div className="md:w-1/2">
+            <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
               Dominic Mena
-             </h1>
-            <p className="text-sm md:text-base text-neutral-200 max-w-xl">
-              Composer for film and television.
+            </h1>
+            <p className="mt-2 text-xs md:text-sm uppercase tracking-[0.2em] text-neutral-600">
+              Composer - Producer - Performer
             </p>
+            <p className="mt-6 text-sm md:text-base text-neutral-700 leading-relaxed">
+              Music for film, television, and records, with a focus on vivid
+              themes, textured harmony, and emotion driven cues.
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-3 text-sm">
+              <Link
+                href="/work"
+                className="rounded border border-neutral-900 px-4 py-2 hover:bg-neutral-900 hover:text-white"
+              >
+                Listen to work
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded bg-neutral-900 px-4 py-2 text-white hover:opacity-90"
+              >
+                Contact
+              </Link>
+            </div>
+          </div>
+
+          <div className="md:w-1/2">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md bg-neutral-200">
+              <Image
+                src="/hero1.jpg"
+                alt="Dominic Mena in the studio"
+                fill
+                priority
+                className="object-cover"
+                sizes="(min-width: 768px) 50vw, 100vw"
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Intro text under the hero */}
-      <div className="space-y-3 max-w-2xl">
-        <p className="text-neutral-300">
-            TEXT OPTIONAL
-        </p>
-      </div>
-    </section>
+
+    
+    </div>
   );
 }
