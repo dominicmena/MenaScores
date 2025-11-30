@@ -6,7 +6,7 @@ export default function HomePage() {
       {/* Hero image */}
       <div className="relative w-full aspect-video overflow-hidden rounded-lg border border-neutral-800 bg-neutral-900">
         <Image
-          src="/dominic-desk.jpg"
+          src="/dominic-desk2.jpg"
           alt="Timothy Williams at work in the studio"
           fill
           priority
