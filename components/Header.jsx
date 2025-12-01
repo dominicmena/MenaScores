@@ -22,10 +22,10 @@ export default function Header() {
             href="/"
             className="text-2xl font-semibold tracking-tight hover:opacity-80"
           >
-            Mena // Scores
+            MENA // Scores
           </Link>
           <div className="mt-1 text-xs uppercase tracking-[0.2em] text-neutral-600">
-            Composition & Production for film and TV
+            Composition & Production for film, TV & MARKETING
           </div>
         </div>
 

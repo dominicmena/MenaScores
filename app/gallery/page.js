@@ -4,7 +4,14 @@ import Image from "next/image";
 const images = [
   { src: "/hero1.jpg", alt: "Studio performance" },
   { src: "/dominic-desk2.jpg", alt: "Writing session" },
-  { src: "/strange-lot-stellinaStampouli-.jpg", alt: "On set" },
+  { src: "/gallery1.jpg", alt: "On set" },
+  { src: "/gallery2.jpg", alt: "On set" },
+  { src: "/gallery3.jpg", alt: "On set" },
+  { src: "/gallery4.jpg", alt: "On set" },
+  { src: "/hero3.jpg", alt: "Studio performance" },
+  { src: "/hero4.jpg", alt: "Studio performance" },
+  { src: "/hero5.jpg", alt: "Studio performance" }
+
 ];
 
 export default function GalleryPage() {
@@ -15,7 +22,7 @@ export default function GalleryPage() {
           Gallery
         </h1>
         <p className="mt-2 text-sm text-neutral-700">
-          Stills from recording sessions, live shows, and collaborations.
+          Stills from recording sessions & collaborations.
         </p>
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
