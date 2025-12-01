@@ -1,8 +1,10 @@
+// components/Header.jsx
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const navItems = [
   { href: "/about", label: "About" },
@@ -13,34 +15,35 @@ const navItems = [
 
 export default function Header() {
   const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="border-b border-neutral-200 bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-6">
-        {/* Logo centered */}
-        <div className="flex flex-col items-center">
+      <div className="relative mx-auto max-w-6xl px-4 pt-3 pb-6">
+        {/* DESKTOP: logo + tagline, centered */}
+        <div className="hidden lg:flex flex-col items-center">
           <Link href="/" className="hover:opacity-80 transition">
-            <div className="relative w-68 h-32 -mt-10"> {/* Adjust width/height as needed */}
+            <div className="relative w-90 h-66 -mt-22 -mb-15">
               <Image
                 src="/composer-site-logo2.svg"
                 alt="MENA // Scores logo"
                 fill
-                className="object-cover"
+                className="object-contain"
                 priority
               />
             </div>
           </Link>
-
-          <div className="mt-1 text-xs uppercase tracking-[0.2em] text-neutral-600 text-center">
+          <div className="mt-1 text-[10px] lg:text-xs uppercase tracking-[0.2em] text-neutral-600 text-center">
             Composition & Production for film, TV & Marketing
           </div>
         </div>
 
-        {/* Navigation */}
-        <nav className="mt-4 flex flex-wrap items-center justify-center gap-6 text-xs md:text-sm uppercase tracking-[0.15em] text-neutral-700">
+        {/* DESKTOP: nav pinned to bottom right */}
+        <nav className="hidden lg:flex gap-4 text-xs uppercase tracking-[0.15em] text-neutral-700 absolute right-0 bottom-2">
           {navItems.map((item) => {
             const isActive =
-              pathname === item.href || pathname.startsWith(item.href + "/");
+              pathname === item.href ||
+              pathname.startsWith(item.href + "/");
 
             return (
               <Link
@@ -55,6 +58,58 @@ export default function Header() {
             );
           })}
         </nav>
+
+        {/* MOBILE / MID SIZE HEADER ROW (up to < lg) */}
+        <div className="lg:hidden flex items-center justify-center">
+          {/* mobile logo */}
+          <Link href="/" className="hover:opacity-80 transition">
+            <div className="relative w-52 h-62 -mt-20 -mb-20">
+              <Image
+                src="/composer-site-logo2.svg"
+                alt="MENA // Scores logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </Link>
+
+          {/* hamburger */}
+          <button
+            type="button"
+            aria-label="Toggle navigation"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            className="flex flex-col items-center justify-center h-9 w-9 rounded border border-neutral-300"
+          >
+            <span className="block h-[2px] w-4 bg-neutral-800" />
+            <span className="mt-1.5 block h-[2px] w-4 bg-neutral-800" />
+            <span className="mt-1.5 block h-[2px] w-4 bg-neutral-800" />
+          </button>
+        </div>
+
+        {/* MOBILE / MID SIZE DROPDOWN NAV */}
+        {menuOpen && (
+          <nav className="mt-3 flex flex-col items-end gap-3 text-xs uppercase tracking-[0.15em] text-neutral-700 lg:hidden">
+            {navItems.map((item) => {
+              const isActive =
+                pathname === item.href ||
+                pathname.startsWith(item.href + "/");
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  className={`hover:text-black transition ${
+                    isActive ? "text-black" : "text-neutral-600"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+        )}
       </div>
     </header>
   );
