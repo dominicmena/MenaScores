@@ -22,7 +22,7 @@ export default function Header() {
           <Link href="/" className="hover:opacity-80 transition">
             <div className="relative w-68 h-32 -mt-10"> {/* Adjust width/height as needed */}
               <Image
-                src="/composer-site-logo.svg"
+                src="/composer-site-logo2.svg"
                 alt="MENA // Scores logo"
                 fill
                 className="object-cover"
