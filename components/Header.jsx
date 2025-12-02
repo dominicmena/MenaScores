@@ -4,7 +4,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navItems = [
   { href: "/about", label: "About" },
@@ -13,9 +13,26 @@ const navItems = [
   { href: "/contact", label: "Contact" },
 ];
 
+const STORAGE_KEY = "mena-menu-open";
+
 export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Load saved state on mount
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const saved = window.localStorage.getItem(STORAGE_KEY);
+    if (saved === "true") {
+      setMenuOpen(true);
+    }
+  }, []);
+
+  // Persist state whenever it changes
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(STORAGE_KEY, menuOpen ? "true" : "false");
+  }, [menuOpen]);
 
   return (
     <header className="border-b border-neutral-200 bg-white">
@@ -111,7 +128,6 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={() => setMenuOpen(false)}
                   className={`hover:text-black transition ${
                     isActive ? "text-black" : "text-neutral-600"
                   }`}
