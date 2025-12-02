@@ -19,7 +19,12 @@ export default function Header() {
 
   return (
     <header className="border-b border-neutral-200 bg-white">
-      <div className="relative mx-auto max-w-6xl px-4 pt-3 pb-6">
+      {/* CONDITIONAL PADDING: pb-6 only when menuOpen */}
+      <div
+        className={`relative mx-auto max-w-6xl px-4 pt-3 ${
+          menuOpen ? "pb-6" : "pb-0"
+        }`}
+      >
         {/* DESKTOP: logo + tagline, centered */}
         <div className="hidden lg:flex flex-col items-center">
           <Link href="/" className="hover:opacity-80 transition">
@@ -42,9 +47,7 @@ export default function Header() {
         <nav className="hidden lg:flex gap-4 text-xs uppercase tracking-[0.15em] text-neutral-700 absolute right-0 bottom-2">
           {navItems.map((item) => {
             const isActive =
-              pathname === item.href ||
-              pathname.startsWith(item.href + "/");
-
+              pathname === item.href || pathname.startsWith(item.href + "/");
             return (
               <Link
                 key={item.href}
@@ -59,46 +62,50 @@ export default function Header() {
           })}
         </nav>
 
-{/* MOBILE / MID SIZE HEADER ROW (up to < lg) */}
-<div className="lg:hidden flex items-center relative w-full">
-  
-  {/* centered mobile logo */}
-  <div className="flex-grow flex justify-center">
-    <Link href="/" className="hover:opacity-80 transition">
-      <div className="relative w-52 h-62 -mt-20 -mb-20">
-        <Image
-          src="/composer-site-logo2.svg"
-          alt="MENA // Scores logo"
-          fill
-          className="object-contain"
-          priority
-        />
-      </div>
-    </Link>
-  </div>
+        {/* MOBILE / MID SIZE HEADER ROW (up to < lg) */}
+        <div className="lg:hidden flex items-center relative w-full">
+          {/* centered mobile logo */}
+          <div className="flex-grow flex justify-center">
+            <Link href="/" className="hover:opacity-80 transition">
+              <div className="relative w-52 h-62 -mt-20 -mb-17">
+                <Image
+                  src="/composer-site-logo2.svg"
+                  alt="MENA // Scores logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </Link>
+          </div>
 
-  {/* hamburger pinned to far right */}
-  <button
-    type="button"
-    aria-label="Toggle navigation"
-    onClick={() => setMenuOpen((prev) => !prev)}
-    className="absolute right-4 top-1.5  flex flex-col items-center justify-center h-9 w-9 rounded border border-neutral-300 bg-white"
-  >
-    <span className="block h-[2px] w-4 bg-neutral-800" />
-    <span className="mt-1.5 block h-[2px] w-4 bg-neutral-800" />
-    <span className="mt-1.5 block h-[2px] w-4 bg-neutral-800" />
-  </button>
+          {/* hamburger pinned to far right */}
+          <button
+            type="button"
+            aria-label="Toggle navigation"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            className="absolute right-4 top-1.5 flex flex-col items-center justify-center h-9 w-9 rounded border border-neutral-300 bg-white"
+          >
+            <span className="block h-[2px] w-4 bg-neutral-800" />
+            <span className="mt-1.5 block h-[2px] w-4 bg-neutral-800" />
+            <span className="mt-1.5 block h-[2px] w-4 bg-neutral-800" />
+          </button>
+        </div>
 
-</div>
-
-
-        {/* MOBILE / MID SIZE DROPDOWN NAV */}
+        {/* MOBILE HORIZONTAL NAV */}
         {menuOpen && (
-          <nav className="mt-3 flex flex-col items-end gap-3 text-xs uppercase tracking-[0.15em] text-neutral-700 lg:hidden">
+          <nav
+            className="
+              lg:hidden 
+              absolute left-1/2 mt-1
+              -translate-x-1/2
+              flex items-center justify-center gap-7
+              text-xs uppercase tracking-[0.15em] text-neutral-700
+            "
+          >
             {navItems.map((item) => {
               const isActive =
-                pathname === item.href ||
-                pathname.startsWith(item.href + "/");
+                pathname === item.href || pathname.startsWith(item.href + "/");
 
               return (
                 <Link
