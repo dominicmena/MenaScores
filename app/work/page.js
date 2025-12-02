@@ -7,7 +7,7 @@ function VideoCard({ title, subtitle, videoId }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-  const iframeSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0`;
+  const iframeSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0&playsinline=1`;
 
   return (
     <div className="space-y-2">
@@ -43,8 +43,7 @@ function VideoCard({ title, subtitle, videoId }) {
             {/* play button */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="ml-0.5 h-0 w-0 border-t-[10px] border-b-[10px] border-l-[16px] border-t-transparent border-b-transparent border-l-white drop-shadow-lg" />
-              </div>
-            
+            </div>
           </button>
         )}
       </div>
