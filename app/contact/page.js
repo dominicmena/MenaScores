@@ -2,7 +2,7 @@
 export default function ContactPage() {
     return (
       <section className="bg-white">
-        <div className="mx-auto max-w-3xl px-4 py-12 space-y-6">
+        <div className="mx-auto max-w-2xl px-4 py-10 space-y-3">
           <h1 className="text-2xl md:text-3xl font-semibold tracking-tight">
             Contact
           </h1>
