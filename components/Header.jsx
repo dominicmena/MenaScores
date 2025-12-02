@@ -60,24 +60,27 @@ export default function Header() {
           </div>
         </div>
 
-        {/* DESKTOP: nav pinned to bottom right */}
-        <nav className="hidden lg:flex gap-4 text-xs uppercase tracking-[0.15em] text-neutral-700 absolute right-0 bottom-2">
-          {navItems.map((item) => {
-            const isActive =
-              pathname === item.href || pathname.startsWith(item.href + "/");
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`hover:text-black transition ${
-                  isActive ? "text-black" : "text-neutral-600"
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+        {/* DESKTOP: nav pinned to bottom right 
+            Show this ONLY when not on the homepage (/) */}
+        {pathname !== "/" && (
+          <nav className="hidden lg:flex gap-4 text-xs uppercase tracking-[0.15em] text-neutral-700 absolute right-0 bottom-2">
+            {navItems.map((item) => {
+              const isActive =
+                pathname === item.href || pathname.startsWith(item.href + "/");
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`hover:text-black transition ${
+                    isActive ? "text-black" : "text-neutral-600"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+        )}
 
         {/* MOBILE / MID SIZE HEADER ROW (up to < lg) */}
         <div className="lg:hidden flex items-center relative w-full">
@@ -109,7 +112,7 @@ export default function Header() {
           </button>
         </div>
 
-        {/* MOBILE HORIZONTAL NAV */}
+        {/* MOBILE HORIZONTAL NAV (unchanged, always available when open) */}
         {menuOpen && (
           <nav
             className="
@@ -122,7 +125,8 @@ export default function Header() {
           >
             {navItems.map((item) => {
               const isActive =
-                pathname === item.href || pathname.startsWith(item.href + "/");
+                pathname === item.href ||
+                pathname.startsWith(item.href + "/");
 
               return (
                 <Link

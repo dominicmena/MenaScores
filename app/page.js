@@ -2,6 +2,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const navItems = [
+  { href: "/about", label: "About" },
+  { href: "/work", label: "Work" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/contact", label: "Contact" },
+];
+
 export default function HomePage() {
   return (
     <main className="bg-black">
@@ -20,21 +27,34 @@ export default function HomePage() {
         {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-black/30" />
 
+        {/* DESKTOP NAV OVER HERO */}
+        <div className="absolute top-6 left-0 right-0 z-20 hidden lg:flex justify-end px-4">
+          <nav className="flex gap-4 text-xs uppercase tracking-[0.15em] text-white">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-white/80 hover:text-white transition"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
         {/* Text and buttons over image */}
         <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col px-4 pb-16 pt-28">
-          {/* You can leave some top space so the header can sit over this */}
-
           <div className="mt-auto space-y-4">
             <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-neutral-200">
-              Film and television  •  Production  •  Mixing
+              {/* Film and television  •  Production  •  Mixing */}
             </p>
 
             <h1 className="text-3xl md:text-5xl font-semibold tracking-[0.18em] text-white uppercase">
-              Composer, Producer, Mixing Engineer.
+              Composer • Producer • Engineer
             </h1>
 
             <p className="max-w-xl text-sm md:text-base text-neutral-200 leading-relaxed">
-              Music for film, television, and records, focused on vivid themes,
+              Music for film, television, and advertising - focused on vivid themes,
               textured harmony, and character driven cues.
             </p>
 
