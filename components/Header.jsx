@@ -59,33 +59,38 @@ export default function Header() {
           })}
         </nav>
 
-        {/* MOBILE / MID SIZE HEADER ROW (up to < lg) */}
-        <div className="lg:hidden flex items-center justify-center">
-          {/* mobile logo */}
-          <Link href="/" className="hover:opacity-80 transition">
-            <div className="relative w-52 h-62 -mt-20 -mb-20">
-              <Image
-                src="/composer-site-logo2.svg"
-                alt="MENA // Scores logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-          </Link>
+{/* MOBILE / MID SIZE HEADER ROW (up to < lg) */}
+<div className="lg:hidden flex items-center relative w-full">
+  
+  {/* centered mobile logo */}
+  <div className="flex-grow flex justify-center">
+    <Link href="/" className="hover:opacity-80 transition">
+      <div className="relative w-52 h-62 -mt-20 -mb-20">
+        <Image
+          src="/composer-site-logo2.svg"
+          alt="MENA // Scores logo"
+          fill
+          className="object-contain"
+          priority
+        />
+      </div>
+    </Link>
+  </div>
 
-          {/* hamburger */}
-          <button
-            type="button"
-            aria-label="Toggle navigation"
-            onClick={() => setMenuOpen((prev) => !prev)}
-            className="flex flex-col items-center justify-center h-9 w-9 rounded border border-neutral-300"
-          >
-            <span className="block h-[2px] w-4 bg-neutral-800" />
-            <span className="mt-1.5 block h-[2px] w-4 bg-neutral-800" />
-            <span className="mt-1.5 block h-[2px] w-4 bg-neutral-800" />
-          </button>
-        </div>
+  {/* hamburger pinned to far right */}
+  <button
+    type="button"
+    aria-label="Toggle navigation"
+    onClick={() => setMenuOpen((prev) => !prev)}
+    className="absolute right-4 top-1.5  flex flex-col items-center justify-center h-9 w-9 rounded border border-neutral-300 bg-white"
+  >
+    <span className="block h-[2px] w-4 bg-neutral-800" />
+    <span className="mt-1.5 block h-[2px] w-4 bg-neutral-800" />
+    <span className="mt-1.5 block h-[2px] w-4 bg-neutral-800" />
+  </button>
+
+</div>
+
 
         {/* MOBILE / MID SIZE DROPDOWN NAV */}
         {menuOpen && (
