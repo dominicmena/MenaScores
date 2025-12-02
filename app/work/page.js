@@ -54,24 +54,26 @@ function VideoCard({ title, subtitle, videoId }) {
 export default function WorkPage() {
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-12 space-y-10">
-        <header>
-          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight">
+      <div className="mx-auto max-w-6xl px-4 py-12  space-y-10">
+        <header >
+          <h1 className="text-2xl md:text-3xl items-center font-semibold tracking-tight">
             Work
           </h1>
           <p className="mt-2 text-sm text-neutral-700">
-            Selected scores and cues for film, brand content, and records.
           </p>
         </header>
 
         {/* FILM SECTION */}
-        <div className="space-y-6">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.15em] text-neutral-700">
-            Film
-          </h2>
-          <p className="text-sm text-neutral-700">
-            Original music presented with scene references for demonstration only.
-          </p>
+        <div className="space-y-3">
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em]">
+  Film
+</h2>
+<div className="h-px w-full bg-neutral-200 mb-3"></div>
+<p className="text-[12px] text-neutral-600 mb-7">
+  Original music presented with scene references for demonstration only.
+</p>
+
+
 
           <div className="grid gap-6 md:grid-cols-2">
             <VideoCard
@@ -84,15 +86,22 @@ export default function WorkPage() {
               subtitle="Horror, Suspense, Character Theme"
               videoId="uSTPTdDHnCU"
             />
+          
+          <VideoCard
+              title="MISSION IMPOSSIBLE (Rescored scene)"
+              subtitle="Action, Thriller, Orchestral"
+              videoId="cJEIG-_n7zY"
+            />
           </div>
         </div>
 
         {/* BRAND / PROMOTIONAL SECTION */}
-        <div className="space-y-6">
+        <div className="space-y-3">
           <h2 className="text-sm font-semibold uppercase tracking-[0.15em] text-neutral-700">
             Brand / Promotional
           </h2>
-          <p className="text-sm text-neutral-700">
+          <div className="h-px w-full bg-neutral-200 mb-3"></div>
+          <p className="text-[12px] text-neutral-700 mb-7">
             Scoring for fashion, creative direction, and branded visual content.
           </p>
 
